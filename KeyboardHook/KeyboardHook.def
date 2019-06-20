@@ -1,0 +1,5 @@
+LIBRARY KeyboardHook
+
+EXPORTS
+	SetKeyboardHook		@1
+	UnhookKeyboardHook	@2
